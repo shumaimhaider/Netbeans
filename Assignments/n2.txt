@@ -1,0 +1,123 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package node1;
+ 
+import java.util.Scanner;
+
+public class list1 {
+   int degree,coffPol2,coffPol1,add,subtract;
+    Node1 present1,present2,present3,present4,present5,present6,present7,present8;
+    Scanner objScanner=new Scanner(System.in); 
+    Node1 present=null;
+    
+    public void addNode(int c,int p){
+        Node1 nNode=new Node1(c,p);
+        Node1 cu;
+        cu=present;
+        if(present==null){
+            present=nNode;
+            
+        }else{
+           nNode.next=present;
+           present=nNode;
+        }
+    }
+        public void display(){
+            Node1 cu;
+            cu=present;
+            while(present!=null){
+                present.Display();
+                present=present.next;
+            
+        }
+        }
+  
+     public void addDegree(){
+         System.out.println("Enter the degree");
+         degree=objScanner.nextInt();
+     }
+     public void addValues(list1 objList1,list1 objList2){
+          System.out.println("First Polynomial");
+       for(int i=0;i<degree;i++){
+           System.out.println("Enter the coff in terms of degree "+i);
+           coffPol1=objScanner.nextInt();
+           objList1.addNode(coffPol1,degree);
+       }
+
+       System.out.println("Second Polynomial");
+       for(int i=0;i<degree;i++){
+           System.out.println("Enter the coff in terms of degree "+i);
+           coffPol2=objScanner.nextInt();
+           objList2.addNode(coffPol2,degree);
+       
+       }
+     }
+       public void addValues2(list1 objList2){
+
+
+       }
+    public list1 addPolynomial(list1 objList1,list1 objList2,list1 objList3){
+         present1=objList1.present;
+         present2=objList2.present;
+        
+       while(present1!=null&&present2!=null){
+           add=present1.coff+present2.coff;
+           objList3.addNode(add, degree);
+           present1=present1.next;
+           present2=present2.next;
+        
+       
+         }
+        
+          return objList3;
+      
+     }
+    public list1 subtractPolynomial(list1 objList1,list1 objList2,list1 objList3){
+        present3=objList1.present;
+         present4=objList2.present;
+       
+        while(present3!=null&&present3!=null){
+           subtract=present3.coff-present4.coff;
+           objList3.addNode(subtract, degree);
+           present3=present3.next;
+           present4=present4.next;
+           
+       }
+         
+         return objList3;    
+    }
+    
+   public list1 MultiplyPolynomial(list1 objList1,list1 objList2,list1 objList3){
+        present5=objList1.present;
+         present6=objList2.present;
+       
+        while(present5!=null&&present6!=null){
+           int multiply=present5.coff*present6.coff;
+           objList3.addNode(multiply, degree);
+           present5=present5.next;
+           present6=present6.next;
+           
+       }
+         
+         return objList3;    
+    }
+      public list1 DividePolynomial(list1 objList1,list1 objList2,list1 objList3){
+        present7=objList1.present;
+         present8=objList2.present;
+       
+        while(present7!=null&&present8!=null){
+           int divide=present7.coff/present8.coff;
+           objList3.addNode(divide, degree);
+           present7=present7.next;
+           present8=present8.next;
+           
+       }
+         
+         return objList3;    
+    }
+   
+}
+   

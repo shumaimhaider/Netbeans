@@ -1,0 +1,53 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package node1;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author hp
+ */
+public class Node1 {
+  int coff,power; 
+  Node1 next;
+   public Node1(int c,int p){
+          coff=c;
+          power=p;
+          next=null;
+      }
+  public void Display(){
+      System.out.print(coff+"x"+power);
+  }
+  
+  
+  public static void main(String[] arg){
+    
+       list1 objList1=new  list1();
+       list1 objList2=new list1();
+       list1 objList3=new list1();
+  objList1.display();
+  objList1.addDegree();
+  objList1.addValues(objList1,objList2);
+  objList3.addPolynomial(objList1, objList2, objList3);
+  System.out.println("Agter addition");
+  objList3.display();
+  objList3.subtractPolynomial(objList1, objList2, objList3);
+  System.out.println();
+  System.out.println("After Subtaction");
+  objList3.display();
+  objList3.MultiplyPolynomial(objList1, objList2, objList3);
+  System.out.println();
+  System.out.println("After Multiplication");
+  objList3.display();
+  objList3.DividePolynomial(objList1, objList2, objList3);
+  System.out.println();
+  System.out.println("After Divide");
+  objList3.display();
+  }      
+}
+
+

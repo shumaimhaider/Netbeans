@@ -1,0 +1,209 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package noded;
+
+import java.util.Scanner;
+
+public class DoublyCircular {
+    NodeD head,tail;
+ Scanner objScanner=new Scanner(System.in);
+    public void AtTail(int data){
+        NodeD nNode=new NodeD(data);;
+        if(head==null){
+           head=tail=nNode;      
+        }else{
+         nNode.previous=tail;
+         tail.next=nNode;
+         tail=nNode; 
+         tail.next=head;
+        } 
+    }
+    public void AtHead(int data){
+        NodeD nNode=new NodeD(data);
+        if(head==null){
+            head=tail=nNode;
+            tail.next=head;
+        }else{
+            nNode.next=head;
+            head.previous=nNode;
+            head=nNode;
+            head.previous=tail;
+        }
+    }
+    // not done yet
+     public void AtPosition(int position,int value){
+         
+        NodeD nNode=new NodeD(value);
+        NodeD temp=head;
+        NodeD previous=tail;
+        if(position==0||position-1==0){
+            AtHead(value);
+        }else{
+            position=position-1;
+            for(int i=0;i<position-1;i++){
+                temp=temp.next;
+            }
+            if(temp!=tail){
+            nNode.next=temp.next;
+            nNode.previous=temp.previous;
+            temp.next=nNode;
+            temp.previous=nNode.previous;
+        }else{
+                AtTail(value);
+            }
+        }
+    }
+     public NodeD addSorted(int data){
+         
+          NodeD nNode=new NodeD(data);
+          if(head==null||head.data>data){
+              AtHead(data);
+              return head;
+          }
+              NodeD temp=head,back=null;
+              while(temp!=tail){
+             if(temp.data>data){
+                nNode.next=back.next;
+                nNode.previous=back.previous;
+                back.next=nNode;
+                back.previous=nNode.previous;
+              return head;
+              }
+             
+              back=temp;
+              if(temp==tail){
+              temp=temp.next;
+              return head;
+              }
+             AtTail(data);
+              }
+              return head;
+              
+     }
+     public int deleteAtHead(){
+         tail.next=head.next;
+         NodeD temp=head.next;
+         head.next=null;
+         temp.previous=null;
+         head=temp;
+         head.previous=tail;
+         return 1;
+     }
+     public int deleteTail(){
+         NodeD temp=tail.previous;
+               tail.previous=null;
+               temp.next=null;
+               tail=temp;
+               tail.next=head;
+               head.previous=tail;
+               return 1;
+     }
+     public int delteNodePosition(int position){
+         NodeD current=head;
+         NodeD n=null;
+         if(position==0||position-1==0){
+             deleteAtHead();
+         }else{
+             position=position-1;
+         for(int i=0;i<position-1;i++){
+             n=current;
+             current=current.next;   
+         }
+         if(n!=tail){
+         n=current.next;
+         current.next=n.next;
+         n.previous=current.next.previous;
+         current=null;
+     }else{
+           deleteTail();  
+         }
+         }
+         return 1;
+     }
+    
+     public void Size(){
+         int count=1;
+         NodeD temp=head;
+         while(temp!=tail){
+             temp=temp.next;
+             count++;
+         }
+         System.out.println(count);
+     }
+     public int searchValue(int search){
+       System.out.println("enter the value you wanna search");
+       search=objScanner.nextInt();
+       NodeD temp=head;
+       int count=0;
+       boolean found=false;
+       while(temp!=tail){
+           count++;
+           if(search==temp.data){
+               System.out.println("Given number found at"+count);
+               found=true;
+           }
+           temp=temp.next;
+       }
+       if(temp.data==search){
+           count++;
+           System.out.println("Number found At"+count);
+           found=true;
+           
+       }
+       if(found==false){
+           System.out.println("mumber not found among nodes");
+       }
+       return search;
+   }
+     public int maximum(){
+         int maximum;
+        NodeD current=head;
+        maximum=current.data;
+        if(head==null){
+       System.out.println("list is empty");
+}
+    while(current!=tail){
+        if(maximum<current.data){
+            maximum=current.data;
+        }
+        current=current.next;
+}
+    if(current.data>maximum){
+        maximum=current.data;
+    }
+    System.out.println("maximum number among nodes is "+maximum);
+      return maximum;
+    }
+    public int Minimum(){
+        NodeD current=head;
+        int minimum=current.data;
+        if(head==null){
+            System.out.println("List is empty");
+        }
+        while(current!=tail){
+            if(minimum>current.data){
+                minimum=current.data;
+            }
+            current=current.next;
+        }
+        if(current.data<minimum){
+            minimum=current.data;
+        }
+        System.out.println("Minimum "+minimum);
+        return minimum;
+    }
+    public void Display(){
+    NodeD n=head;
+    NodeD t=tail;
+    do{
+        System.out.println(n.data);
+         n=n.next;
+
+    }while(n!=tail.next);
+        }    
+
+}
+

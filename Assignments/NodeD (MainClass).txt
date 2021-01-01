@@ -1,0 +1,101 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package noded;
+
+/**
+ *
+ * @author hp
+ */
+public class NodeD {
+    int data;
+    NodeD next;
+    NodeD previous;
+    public NodeD(){
+        
+    }
+    public NodeD(int v){
+        data=v;
+        next=null;
+        previous=null;
+    }
+   
+    public static void main(String[] args) {
+        NodeD objNodeD=new NodeD();
+        DoublyList objList=new DoublyList();
+        Circular objCircular=new Circular();
+        DoublyCircular objdobcirc=new DoublyCircular();
+//       objList.AtHead(4);
+//       objList.AtHead(10);
+//       objList.AtHead(31);
+//       objList.AtHead(14);
+//       System.out.println("____");
+//         objList.Display();
+//       objList.deleteAtHead();
+//       System.out.println("____");
+//       objList.Display();
+       
+//       objList.delteTail();
+//       System.out.println("____");
+//        objList.Display();
+//       objList.delteNodePosition(1);
+//       System.out.println("_____");
+//       objList.Display();
+        //objList.DeleteTail();
+//      objList.searchValue(4);
+//       objList.Minimum();
+      
+       //objList.addSorted(9);
+       
+     //  objList.AtPosition(1,7);
+     //  objList.Display();
+     
+       // objList.Size();
+       
+       
+       System.out.println("functions for the circular list");
+       objCircular.AtStart(1);
+       objCircular.AtStart(2);
+       objCircular.AtStart(3);
+       objCircular.AtStart(4);
+//       objCircular.maximum();
+     //  objCircular.searchValue(1);
+//      objCircular.AtPosition(5, 7);
+//      objCircular.Display();
+//      objCircular.deleteHead();
+//      
+//        objCircular.deleteTail();
+    //    objCircular.deletePosition(4);
+//        objCircular.Display();
+//        objCircular.deleteValue(3);
+  //     objCircular.Display();
+//          objCircular.AtPosition(1, 2);
+//          objCircular.AtPosition(3, 4);
+//          objCircular.Display();
+//  System.out.println("____________________________");
+//      objdobcirc.AtHead(1);
+//      objdobcirc.AtHead(2);
+//      objdobcirc.AtTail(3);
+  //    objdobcirc.deleteAtHead();
+    //  objdobcirc.Display();
+  // objdobcirc.deleteTail();
+     // objdobcirc.Display();
+  //    objdobcirc.Size();
+       objdobcirc.AtHead(1);
+       objdobcirc.AtTail(2);
+       objdobcirc.AtTail(3);
+       objdobcirc.AtTail(4);
+       objdobcirc.AtHead(10);
+   objdobcirc.AtPosition(8,11);
+      objdobcirc.Display();
+//     objdobcirc.searchValue(3);
+//     objdobcirc.Minimum();
+//     objdobcirc.maximum();
+//     objdobcirc.delteNodePosition(2);
+//    objdobcirc.Display();
+//    System.out.println("    "+objdobcirc.head.previous.data);
+    }
+    
+}
